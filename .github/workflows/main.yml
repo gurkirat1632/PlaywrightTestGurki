@@ -11,6 +11,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    env:  # <-- Declare environment variables here using GitHub Actions secrets/variables
+      BASE_URL: ${{ secrets.BASE_URL }}
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
