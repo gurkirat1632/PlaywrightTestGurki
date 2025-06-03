@@ -23,7 +23,9 @@ export class PlayPage {
     await this.page.waitForTimeout(2000)
     await this.page.getByLabel("Standard").click();
     await this.page.waitForTimeout(2000)
+    await this.page.waitForSelector();
     await this.page.getByTitle("Home page link").hover();
     await this.page.waitForTimeout(2000)
+    
   }
 }
