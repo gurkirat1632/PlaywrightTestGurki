@@ -1,18 +1,6 @@
-name: Run Playwright Tests
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-  workflow_dispatch:     # Manual trigger via GitHub UI
-
 jobs:
   test:
     runs-on: ubuntu-latest
-
-    env:  # <-- Declare environment variables here using GitHub Actions secrets/variables
-      BASE_URL: ${{ secrets.BASE_URL }}
 
     steps:
       - name: Checkout Repository
@@ -22,6 +10,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
+
+      - name: Create .env file with secrets
+        run: |
+          echo "BASE_URL=${{ secrets.BASE_URL }}" >> .env
 
       - name: Install Dependencies
         run: npm install
